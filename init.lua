@@ -647,7 +647,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -707,13 +707,14 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-y>'] = cmp.mapping.confirm { select = true },
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-g>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+--    ['<CR>'] = cmp.mapping.confirm {
+--      behavior = cmp.ConfirmBehavior.Replace,
+--      select = true,
+--    },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
